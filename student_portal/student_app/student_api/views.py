@@ -30,7 +30,7 @@ def api_view(request):
                 "required_credits": api_handler.call_required_credits_api(),
                 "eco_major_elective": api_handler.call_eco_major_elective_api(),
             }
-            return JsonResponse(outputs)
+            return render(request, 'student_api/api_result.html', {'json_data': outputs})  # Render the result template
     else:
         form = RollNumberForm()
     
