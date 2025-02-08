@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Outputs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Outputs</h1>
+
+    <h2>Graduation Check API Output</h2>
+    <pre>False</pre>
+
+    <h2>Bucket API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'studentBucketCourses': [[{'course': 'ESC205A', 'courseName': 'Environmental Sciences', 'semester': '5', 'status': 'Complete', 'credits': 2, 'grade': 'B-'}, {'course': 'ESC207A', 'courseName': '', 'semester': '', 'status': 'Incomplete', 'credits': 0, 'grade': ''}]], 'completedBuckets': [True], 'totalCredits': 2}}</pre>
+
+    <h2>Mandatory API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'coreCourses': [{'course': 'CSE101', 'courseName': 'Introduction to Programming', 'semester': '1', 'status': 'Complete', 'credits': 4, 'grade': 'B'}, ...]}}</pre>
+
+    <h2>SSH Major API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'totalCredits': 32, 'courses': [{'course': 'PSY305', 'courseName': 'Attention and Perception', 'semester': '6', 'status': 'Complete', 'credits': 4, 'grade': 'B'}, ...]}}</pre>
+
+    <h2>CW API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'totalCredits': 2, 'courses': [{'course': 'MSC491', 'courseName': 'Community Work', 'semester': 'Summer Term 2', 'status': 'Complete', 'credits': 1, 'grade': 'S'}, ...]}}</pre>
+
+    <h2>SG API Output</h2>
+    <pre>{'isCompleteText': 'Complete', 'isCompleteBool': True, 'data': {'courses': [{'course': 'MSC481', 'courseName': 'Self Growth', 'semester': 'Summer Term 2', 'status': 'Complete', 'credits': 1, 'grade': 'S'}, ...]}}</pre>
+
+    <h2>Thirty Two Credits API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'totalCredits': 24, 'courseData': [{'course': 'CSE656', 'courseName': 'Information Integration and Applications', 'semester': '5', 'status': 'Complete', 'credits': 4, 'grade': 'B'}, ...]}}</pre>
+
+    <h2>IP API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'totalCredits': 4, 'courses': [{'course': 'BIP398', 'courseName': 'Independent Project', 'semester': '6', 'status': 'Complete', 'credits': 4, 'grade': 'A'}]}}</pre>
+
+    <h2>Online Courses API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'totalCredits': 8, 'courses': [{'course': 'CSE998A1', 'courseName': 'Distance Course in CSE', 'semester': 'Summer Term 3', 'status': 'Complete', 'credits': 4, 'grade': 'S'}, ...]}}</pre>
+
+    <h2>Two XX Courses API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Not Done', 'data': {'totalCredits': 0, 'courses': []}}</pre>
+
+    <h2>BTP API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Incomplete', 'data': {'totalCredits': 4, 'courses': [{'course': 'BTP498', 'courseName': 'B.Tech Project', 'semester': '7', 'status': 'Complete', 'credits': 4, 'grade': 'A-'}]}}</pre>
+
+    <h2>Honors API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Not Done', 'data': [{'rule': 'Extra 12 credits', 'value': '0', 'status': 'No'}, ...]}</pre>
+
+    <h2>Minors API Output</h2>
+    <pre>[{'isCompleteBool': False, 'isCompleteText': 'Not Done', 'totalCredits': 0, 'data': {'stream': 'Computational Biology', 'coreCoursesCompleted': {'isCompleteBool': False, 'isCompleteText': 'Not Done', 'totalCredits': 0, 'data': [{'course': 'BIO213', 'courseName': '', 'semester': '', 'status': 'Not Done', 'credits': 0, 'grade': ''}]} ...}}]</pre>
+
+    <h2>Eco Major Core API Output</h2>
+    <pre>{'isCompleteBool': False, 'isCompleteText': 'Incomplete', 'data': {'totalCredits': 8, 'courses': [{'course': 'MTH377', 'courseName': 'Convex Optimization', 'semester': '4', 'status': 'Complete', 'credits': 4, 'grade': 'C'}, ...]}}</pre>
+
+    <h2>Incomplete Grade API Output</h2>
+    <pre>{'isCompleteBool': True, 'isCompleteText': 'Complete', 'data': {'courseData': [], 'totalCredits': 0}}</pre>
+
+    <h2>Required Credits API Output</h2>
+    <pre>{'isCompleteBool': False, 'isCompleteText': 'Incomplete', 'data': 148}</pre>
+
+    <h2>Eco Major Elective API Output</h2>
+    <pre>{'isCompleteBool': False, 'isCompleteText': 'Incomplete', 'data': {'totalCredits': 0, 'courses': []}}</pre>
+</body>
+</html>
