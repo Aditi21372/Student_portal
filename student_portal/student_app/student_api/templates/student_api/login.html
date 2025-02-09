@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduation Checklist Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            text-align: center;
+        }
+        
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 5px 0;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .header img {
+            height: 40px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            margin: 10px 0;
+        }
+        .login-container {
+            background: url('IIITD.jpeg') no-repeat center center/cover;
+            height: 85vh;
+            display: flex;
+            justify-content: flex-end; /* Move content to the right */
+            align-items: flex-start; /* Move content to the top */
+            padding: 20px 50px; /* Adjust for exact positioning */
+        }
+
+        .login-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #49c5b6;
+        }
+
+        .google-btn {
+            background: #db4437;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .google-btn:hover {
+            background: #c1351d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="iiitd_logo.png" alt="IIITD Logo">
+        <h1>Graduation Checklist Portal</h1>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <img src="iiitd_full_logo.png" alt="IIITD Full Logo" style="width: 100%;">
+            <h2>Sign in with Google</h2>
+            <button class="google-btn">Continue with Google</button>
+        </div>
+    </div>
+
+</body>
+</html>

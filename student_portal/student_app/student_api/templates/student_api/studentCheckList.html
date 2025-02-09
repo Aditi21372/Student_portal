@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .student-info {
+            padding: 15px;
+            border-bottom: 2px solid #ddd;
+            text-align: center;
+        }
+        .student-info h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .info-item {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .status {
+            color: red;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            background-color: teal;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: darkcyan;
+        }
+        .course-details {
+            background-color: #f9f9f9;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            padding: 20px;
+        }
+        .incomplete-course {
+            background-color: #ffcdd2;
+        }
+        .complete {
+            color: green;
+        }
+        .incomplete {
+            color: red !important;
+        }
+        .total-credits {
+            font-weight: bold;
+            text-align: right;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .status-incomplete {
+            color: red;
+        }
+    </style>
+</head>
+<!-- Previous body structure remains exactly the same -->
+<body>
+    <div class="container">
+        <div class="student-info">
+            <h2>Student Information</h2>
+            <div class="info-item"><strong>Roll Number:</strong> <span id="roll-number">Loading...</span></div>
+            <div class="info-item"><strong>Name:</strong> <span id="student-name">Loading...</span></div>
+            <div class="info-item"><strong>Branch:</strong> <span id="branch">Loading...</span></div>
+            <div class="info-item status"><strong>Graduation Status:</strong> <span id="graduation-status">Loading...</span></div>
+        </div>
+        <div id="loading" class="loading">Loading student data...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        <table id="main-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Requirement</th>
+                    <th>Status</th>
+                    <th>Credits</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="requirements-table">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const requirements = [
+            { name: "Mandatory Courses", key: "mandatory", includesBucket: true },
+            { name: "SSH Major", key: "ssh_major" },
+            { name: "Community Work", key: "cw", showTwice: false },
+            { name: "Self Growth", key: "sg", showTwice: false},
+            { name: "32 Credits", key: "thirty_two_credits" },
+            { name: "Independent Project", key: "ip" },
+            { name: "Online Courses", key: "online_courses", removeDuplicates: true },
+            { name: "2X Courses", key: "two_x_courses" },
+            { name: "BTP", key: "btp" },
+            { name: "Honors", key: "honors" },
+            { name: "ECO Major", key: ["eco_major_core", "eco_major_elective"] },
+            { name: "Minors in Computational Biology", key: "minors", index: 0 },
+            { name: "Minors in Economics", key: "minors", index: 1 },
+            { name: "Minors in Entrepreneurship", key: "minors", index: 2 },
+            { name: "Minors in Design", key: "minors", index: 3 },
+            { name: "Incomplete Grades", key: "incomplete_grade" },
+            { name: "Required Credits", key: "required_credits" }
+        ];
+
+        function removeDuplicateCourses(courses) {
+            const uniqueCourses = [];
+            const seenCourses = new Set();
+            
+            courses.forEach(course => {
+                if (!seenCourses.has(course.course)) {
+                    seenCourses.add(course.course);
+                    uniqueCourses.push(course);
+                }
+            });
+            
+            return uniqueCourses;
+        }
+
+        function createCourseTable(courses, options = {}) {
+            if (!courses || courses.length === 0) {
+                return '<p style="text-align: center; padding: 10px;">No courses available</p>';
+            }
+
+            let displayCourses = courses;
+            if (options.showTwice) {
+                // For CW and SG, show each course exactly twice
+                displayCourses = courses.flatMap(course => [course, course]);
+            } else if (options.removeDuplicates) {
+                displayCourses = removeDuplicateCourses(courses);
+            }
+
+            const totalCredits = displayCourses.reduce((sum, course) => sum + (course.credits || 0), 0);
+
+            return `
+                <table style="width: 100%; margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Semester</th>
+                            <th>Status</th>
+                            <th>Credits</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${displayCourses.map((course, index) => `
+                            <tr class="${course.status === 'Incomplete' ? 'incomplete-course' : ''}">
+                                <td>${index + 1}</td>
+                                <td>${course.course}</td>
+                                <td>${course.courseName || '-'}</td>
+                                <td>${course.semester || '-'}</td>
+                                <td class="${course.status === 'Incomplete' ? 'status-incomplete' : ''}">${course.status || '-'}</td>
+                                <td>${course.credits || 0}</td>
+                                <td>${course.grade || '-'}</td>
+                            </tr>
+                        `).join('')}
+                        <tr>
+                            <td colspan="7" class="total-credits">
+                                Total Credits: ${totalCredits}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function handleViewDetails(key, button, data, options = {}) {
+            const row = button.closest('tr');
+            let detailsRow = row.nextElementSibling;
+            
+            if (detailsRow && detailsRow.classList.contains('course-details')) {
+                detailsRow.remove();
+                button.textContent = 'View Details';
+                return;
+            }
+
+            let content = '';
+            if (key === 'mandatory' && options.includesBucket) {
+                const mandatoryCourses = data.mandatory.data.coreCourses || [];
+                const bucketCourses = data.bucket.data.studentBucketCourses?.[0] || [];
+                const allCourses = [...mandatoryCourses, ...bucketCourses];
+                content = createCourseTable(allCourses);
+            } else if (Array.isArray(key)) {
+                // Handle combined ECO Major
+                const coreCourses = data.eco_major_core.data.courses || [];
+                const electiveCourses = data.eco_major_elective.data.courses || [];
+                const allCourses = [...coreCourses, ...electiveCourses];
+                content = createCourseTable(allCourses);
+            } else if (key === 'minors') {
+                const minorData = data.minors[options.index];
+                if (minorData.data.coreCoursesCompleted) {
+                    const coreCourses = minorData.data.coreCoursesCompleted.data || [];
+                    const additionalCourses = minorData.data.additionalCreditsCompleted?.data || [];
+                    const allCourses = [...coreCourses, ...additionalCourses];
+                    content = createCourseTable(allCourses);
+                }
+            } else if (key === 'honors') {
+                const honorsData = data[key];
+                content = `
+                    <table style="width: 100%; margin-top: 10px;">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Rule</th>
+                                <th>Value</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${honorsData.data.map((item, index) => `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${item.rule}</td>
+                                    <td>${item.value}</td>
+                                    <td class="${item.status.toLowerCase() === 'no' ? 'status-incomplete' : ''}">${item.status}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                const categoryData = data[key];
+                if (!categoryData) return;
+
+                if (categoryData.data && Array.isArray(categoryData.data.courses)) {
+                    content = createCourseTable(categoryData.data.courses, options);
+                } else if (categoryData.data && Array.isArray(categoryData.data.courseData)) {
+                    content = createCourseTable(categoryData.data.courseData, options);
+                } else if (categoryData.data && Array.isArray(categoryData.data.coreCourses)) {
+                    content = createCourseTable(categoryData.data.coreCourses, options);
+                } else if (typeof categoryData.data === 'number') {
+                    content = `<p style="text-align: center; padding: 10px;">Total Credits: ${categoryData.data}</p>`;
+                }
+            }
+
+            const newRow = document.createElement('tr');
+            newRow.classList.add('course-details');
+            newRow.innerHTML = `<td colspan="5">${content}</td>`;
+            row.after(newRow);
+            button.textContent = 'Hide Details';
+        }
+
+        function populateStudentInfo(data) {
+            document.getElementById("roll-number").textContent = data.roll_number.RollNo;
+            document.getElementById("student-name").textContent = data.roll_number.Name;
+            document.getElementById("branch").textContent = data.roll_number.branch;
+            document.getElementById("graduation-status").textContent = data.graduation_check ? "Complete" : "Incomplete";
+        }
+
+        function populateRequirementsTable(data) {
+            const tableBody = document.getElementById("requirements-table");
+            tableBody.innerHTML = '';
+
+            requirements.forEach((req, index) => {
+                let categoryData, status, credits;
+
+                if (Array.isArray(req.key)) {
+                    // Handle combined ECO Major
+                    const coreData = data.eco_major_core;
+                    const electiveData = data.eco_major_elective;
+                    status = (coreData.isCompleteText === 'Complete' && electiveData.isCompleteText === 'Complete') ? 'Complete' : 'Incomplete';
+                    credits = (coreData.data?.totalCredits || 0) + (electiveData.data?.totalCredits || 0);
+                } else if (req.key === 'minors') {
+                    categoryData = data.minors[req.index];
+                    status = categoryData.isCompleteText;
+                    credits = categoryData.totalCredits;
+                } else {
+                    categoryData = data[req.key];
+                    if (!categoryData) return;
+                    status = categoryData.isCompleteText || 'N/A';
+                    
+                    if (req.key === 'mandatory' && req.includesBucket) {
+                        credits = (categoryData.data?.totalCredits || 0) + (data.bucket.data?.totalCredits || 0);
+                    } else if (req.key === 'online_courses') {
+                        const uniqueCourses = removeDuplicateCourses(categoryData.data.courses || []);
+                        credits = uniqueCourses.reduce((sum, course) => sum + (course.credits || 0), 0);
+                    } else {
+                        credits = categoryData.data?.totalCredits || (typeof categoryData.data === 'number' ? categoryData.data : 0);
+                    }
+                }
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${req.name}</td>
+                    <td class="${status.toLowerCase().includes('complete') ? 'complete' : 'incomplete'}">${status}</td>
+                    <td>${credits}</td>
+                    <td>
+                        <button onclick='handleViewDetails("${Array.isArray(req.key) ? JSON.stringify(req.key) : req.key}", this, initialData, ${JSON.stringify(req)})'>
+                            View Details
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize data from Django template
+        const initialData = JSON.parse('{{ json_data|escapejs }}');
+        
+        function loadStudentData() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('main-table').style.display = 'table';
+            
+            populateStudentInfo(initialData);
+            populateRequirementsTable(initialData);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadStudentData);
+    </script>

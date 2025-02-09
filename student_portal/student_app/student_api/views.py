@@ -1,4 +1,5 @@
 import logging
+import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -38,13 +39,16 @@ def api_view(request):
                 
                 if outputs is None:
                     outputs = run_api_calls(roll_number)
+                    print(outputs)
                     # Cache the results for 5 minutes
                     cache.set(cache_key, outputs, 300)
                 
+                import json
+                # After form submission, show studentCheckList.html with API data
                 return render(
                     request, 
-                    'student_api/api_result.html', 
-                    {'json_data': outputs, 'roll_number': roll_number}
+                    'student_api/studentCheckList.html', 
+                    {'json_data': json.dumps(outputs), 'roll_number': roll_number}
                 )
             except Exception as e:
                 logger.error(f"Error processing request for roll number {roll_number}: {str(e)}")
@@ -56,7 +60,7 @@ def api_view(request):
                         'error': 'An error occurred while processing your request. Please try again.'
                     }
                 )
-    else:
-        form = RollNumberForm()
     
+    # For GET request, show the initial form
+    form = RollNumberForm()
     return render(request, 'student_api/api_form.html', {'form': form})
