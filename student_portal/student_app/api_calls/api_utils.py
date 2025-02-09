@@ -5,6 +5,7 @@ def run_api_calls(roll_number=None):
     api_handler = APIHandler()
     
     outputs = {
+        "roll_number": api_handler.call_rollNumber_info_api(roll_number=roll_number),
         "graduation_check": api_handler.call_graduation_check_api(),
         "bucket": api_handler.call_bucket_api(),
         "mandatory": api_handler.call_mandatory_api(),
@@ -23,14 +24,15 @@ def run_api_calls(roll_number=None):
         "required_credits": api_handler.call_required_credits_api(),
         "eco_major_elective": api_handler.call_eco_major_elective_api(),
     }
+    api_handler.save_json_to_file(outputs, roll_number)
     return outputs
 
-def get_course_info():
-    """Get course information"""
-    api_handler = APIHandler()
-    return api_handler.call_course_info_api()
+# def get_course_info():
+#     """Get course information"""
+#     api_handler = APIHandler()
+#     return api_handler.call_course_info_api()
 
-def get_specific_info():
-    """Get specific student information"""
-    api_handler = APIHandler()
-    return api_handler.call_specific_api()
+# def get_specific_info():
+#     """Get specific student information"""
+#     api_handler = APIHandler()
+#     return api_handler.call_specific_api()

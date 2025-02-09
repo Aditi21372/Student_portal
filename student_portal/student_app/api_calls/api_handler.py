@@ -1,4 +1,6 @@
 import requests
+import json
+
 from .config import API_CONFIG
 import logging
 
@@ -10,7 +12,21 @@ class APIHandler:
         self.timeout = API_CONFIG['timeout']
         self.verify_ssl = API_CONFIG['verify_ssl']
 
+    def save_json_to_file(self, json_data, file_path):
+        """Save JSON data to a file."""
+        try:
+            with open(file_path, 'w') as json_file:
+                json.dump(json_data, json_file, indent=4)
+            logger.info(f"JSON data successfully saved to {file_path}")
+        except Exception as e:
+            logger.error(f"Error saving JSON data to file: {str(e)}")
+
+    def call_rollNumber_info_api(self,roll_number):
+        """Call the student info API and return its output."""
+        return self.get(f"{roll_number}/info")
+    
     def call_graduation_check_api(self):
+
         """Call the graduation check API and return its output."""
         return self.get("CSSS/graduation-check")
 
