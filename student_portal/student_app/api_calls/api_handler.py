@@ -1,8 +1,14 @@
 import requests
+from .config import API_CONFIG
+import logging
+
+logger = logging.getLogger(__name__)
 
 class APIHandler:
-    def __init__(self, base_url):
-        self.base_url = base_url
+    def __init__(self, base_url=None):
+        self.base_url = base_url or API_CONFIG['base_url']
+        self.timeout = API_CONFIG['timeout']
+        self.verify_ssl = API_CONFIG['verify_ssl']
 
     def call_graduation_check_api(self):
         """Call the graduation check API and return its output."""
@@ -83,19 +89,29 @@ class APIHandler:
     def get(self, endpoint, params=None):
         """Make a GET request to the specified endpoint."""
         try:
-            response = requests.get(f"{self.base_url}/{endpoint}", params=params)
-            response.raise_for_status()  # Raise an error for bad responses
+            response = requests.get(
+                f"{self.base_url}/{endpoint}",
+                params=params,
+                timeout=self.timeout,
+                verify=self.verify_ssl
+            )
+            response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
-            print(f"Error during GET request: {e}")
-            return None
+            logger.error(f"Error during GET request to {endpoint}: {str(e)}")
+            return {"error": "An error occurred while processing your request"}
 
     def post(self, endpoint, data=None):
         """Make a POST request to the specified endpoint."""
         try:
-            response = requests.post(f"{self.base_url}/{endpoint}", json=data)
-            response.raise_for_status()  # Raise an error for bad responses
+            response = requests.post(
+                f"{self.base_url}/{endpoint}",
+                json=data,
+                timeout=self.timeout,
+                verify=self.verify_ssl
+            )
+            response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
-            print(f"Error during POST request: {e}")
-            return None
+            logger.error(f"Error during POST request to {endpoint}: {str(e)}")
+            return {"error": "An error occurred while processing your request"}

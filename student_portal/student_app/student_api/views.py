@@ -1,36 +1,46 @@
+import logging
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
+from django.core.cache import cache
 from .forms import RollNumberForm
-from student_app.api_calls.api_handler import APIHandler  # Updated import statement
+from student_app.api_calls.api_utils import run_api_calls
 
+logger = logging.getLogger(__name__)
+
+@require_http_methods(["GET", "POST"])
 def api_view(request):
+    """View to handle API form submission and display results"""
     if request.method == 'POST':
         form = RollNumberForm(request.POST)
         if form.is_valid():
-            roll_number = form.cleaned_data['roll_number']
-            api_handler = APIHandler("http://localhost:3002/api")
-            
-            # Call the APIs using the roll number
-            outputs = {
-                "graduation_check": api_handler.call_graduation_check_api(),
-                "bucket": api_handler.call_bucket_api(),
-                "mandatory": api_handler.call_mandatory_api(),
-                "ssh_major": api_handler.call_ssh_major_api(),
-                "cw": api_handler.call_cw_api(),
-                "sg": api_handler.call_sg_api(),
-                "thirty_two_credits": api_handler.call_thirty_two_credits_api(),
-                "ip": api_handler.call_ip_api(),
-                "online_courses": api_handler.call_online_courses_api(),
-                "two_x_courses": api_handler.call_two_x_courses_api(),
-                "btp": api_handler.call_btp_api(),
-                "honors": api_handler.call_honors_api(),
-                "minors": api_handler.call_minors_api(),
-                "eco_major_core": api_handler.call_eco_major_core_api(),
-                "incomplete_grade": api_handler.call_incomplete_grade_api(),
-                "required_credits": api_handler.call_required_credits_api(),
-                "eco_major_elective": api_handler.call_eco_major_elective_api(),
-            }
-            return render(request, 'student_api/api_result.html', {'json_data': outputs})  # Render the result template
+            try:
+                roll_number = form.cleaned_data['roll_number']
+                
+                # Try to get cached results first
+                cache_key = f'student_data_{roll_number}'
+                outputs = cache.get(cache_key)
+                
+                if outputs is None:
+                    outputs = run_api_calls(roll_number)
+                    # Cache the results for 5 minutes
+                    cache.set(cache_key, outputs, 300)
+                
+                return render(
+                    request, 
+                    'student_api/api_result.html', 
+                    {'json_data': outputs, 'roll_number': roll_number}
+                )
+            except Exception as e:
+                logger.error(f"Error processing request for roll number {roll_number}: {str(e)}")
+                return render(
+                    request,
+                    'student_api/api_form.html',
+                    {
+                        'form': form,
+                        'error': 'An error occurred while processing your request. Please try again.'
+                    }
+                )
     else:
         form = RollNumberForm()
     
