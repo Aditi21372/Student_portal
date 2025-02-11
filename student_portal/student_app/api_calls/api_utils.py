@@ -24,7 +24,7 @@ def run_api_calls(roll_number=None):
         "required_credits": api_handler.call_required_credits_api(),
         "eco_major_elective": api_handler.call_eco_major_elective_api(),
     }
-    api_handler.save_json_to_file(outputs, roll_number)
+    # api_handler.save_json_to_file(outputs, roll_number)
     return outputs
 
 # def get_course_info():

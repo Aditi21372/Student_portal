@@ -95,12 +95,11 @@
         }
     </style>
 </head>
-<!-- Previous body structure remains exactly the same -->
 <body>
     <div class="container">
         <div class="student-info">
             <h2>Student Information</h2>
-            <div class="info-item"><strong>Roll Number:</strong> <span id="roll-number">Loading...</span></div>
+            <div class="info-item"><strong>Roll Number:</strong> <span id="roll-number">{{ roll_number }}</span></div>
             <div class="info-item"><strong>Name:</strong> <span id="student-name">Loading...</span></div>
             <div class="info-item"><strong>Branch:</strong> <span id="branch">Loading...</span></div>
             <div class="info-item status"><strong>Graduation Status:</strong> <span id="graduation-status">Loading...</span></div>
@@ -165,7 +164,6 @@
 
             let displayCourses = courses;
             if (options.showTwice) {
-                // For CW and SG, show each course exactly twice
                 displayCourses = courses.flatMap(course => [course, course]);
             } else if (options.removeDuplicates) {
                 displayCourses = removeDuplicateCourses(courses);
@@ -225,7 +223,6 @@
                 const allCourses = [...mandatoryCourses, ...bucketCourses];
                 content = createCourseTable(allCourses);
             } else if (Array.isArray(key)) {
-                // Handle combined ECO Major
                 const coreCourses = data.eco_major_core.data.courses || [];
                 const electiveCourses = data.eco_major_elective.data.courses || [];
                 const allCourses = [...coreCourses, ...electiveCourses];
@@ -285,7 +282,8 @@
         }
 
         function populateStudentInfo(data) {
-            document.getElementById("roll-number").textContent = data.roll_number.RollNo;
+            // Use the directly passed roll_number from Django template
+            document.getElementById("roll-number").textContent = '{{ roll_number }}';
             document.getElementById("student-name").textContent = data.roll_number.Name;
             document.getElementById("branch").textContent = data.roll_number.branch;
             document.getElementById("graduation-status").textContent = data.graduation_check ? "Complete" : "Incomplete";
@@ -299,7 +297,6 @@
                 let categoryData, status, credits;
 
                 if (Array.isArray(req.key)) {
-                    // Handle combined ECO Major
                     const coreData = data.eco_major_core;
                     const electiveData = data.eco_major_elective;
                     status = (coreData.isCompleteText === 'Complete' && electiveData.isCompleteText === 'Complete') ? 'Complete' : 'Incomplete';
@@ -339,7 +336,6 @@
             });
         }
 
-        // Initialize data from Django template
         const initialData = JSON.parse('{{ json_data|escapejs }}');
         
         function loadStudentData() {
@@ -352,3 +348,5 @@
 
         document.addEventListener('DOMContentLoaded', loadStudentData);
     </script>
+</body>
+</html>
