@@ -1,8 +1,8 @@
 {
     "roll_number": {
-        "Roll No": 2021393,
-        "Name": "KANISHK  KUKREJA",
-        "branch": "CSSS"
+        "Roll No": 2021370,
+        "Name": "AADYA  IIITD",
+        "branch": "CSD"
     },
     "graduation_check": false,
     "bucket": {
@@ -17,7 +17,7 @@
                         "semester": "5",
                         "status": "Complete",
                         "credits": 2,
-                        "grade": "B"
+                        "grade": "C"
                     },
                     {
                         "course": "ESC207A",
@@ -42,43 +42,43 @@
             "coreCourses": [
                 {
                     "course": "CSE101",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Introduction to Programming",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C"
                 },
                 {
                     "course": "DES102",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Introduction to HCI",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B"
                 },
                 {
                     "course": "MTH100",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Maths I",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "D"
                 },
                 {
                     "course": "ECE111",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Digital Circuits",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B-"
                 },
                 {
                     "course": "COM101",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Communication Skills",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B-"
                 },
                 {
                     "course": "CSE102",
@@ -86,7 +86,7 @@
                     "semester": "2",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "C-"
+                    "grade": "D"
                 },
                 {
                     "course": "SOC101",
@@ -102,7 +102,7 @@
                     "semester": "2",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "A-"
+                    "grade": "C-"
                 },
                 {
                     "course": "CSE112",
@@ -110,7 +110,7 @@
                     "semester": "2",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "A-"
+                    "grade": "C"
                 },
                 {
                     "course": "SSH101",
@@ -123,18 +123,18 @@
                 {
                     "course": "CSE231",
                     "courseName": "Operating Systems ",
-                    "semester": "3",
+                    "semester": "5",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "A-"
+                    "grade": "C-"
                 },
                 {
                     "course": "SSH201",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Research Methods in Social Sciences and Design",
+                    "semester": "3",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C-"
                 },
                 {
                     "course": "CSE121",
@@ -154,11 +154,11 @@
                 },
                 {
                     "course": "MTH203",
-                    "courseName": "",
-                    "semester": "",
-                    "status": "Incomplete",
-                    "credits": 0,
-                    "grade": ""
+                    "courseName": "Maths III",
+                    "semester": "3",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "D"
                 },
                 {
                     "course": "CSE222",
@@ -166,7 +166,7 @@
                     "semester": "4",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "A"
+                    "grade": "B-"
                 },
                 {
                     "course": "MTH377",
@@ -182,7 +182,7 @@
                     "semester": "4",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "A-"
+                    "grade": "C"
                 },
                 {
                     "course": "ECO221",
@@ -201,73 +201,32 @@
                     "grade": "B"
                 }
             ],
-            "totalCredits": 30
+            "totalCredits": 58
         }
     },
     "ssh_major": {
         "isCompleteBool": false,
         "isCompleteText": "Not Done",
         "data": {
-            "totalCredits": 16,
+            "totalCredits": 4,
             "courses": [
                 {
-                    "course": "ECO301",
-                    "courseName": "Microeconomics",
-                    "semester": "7",
+                    "course": "SSH325",
+                    "courseName": "Ethics in AI",
+                    "semester": "6",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "B-"
-                },
-                {
-                    "course": "ECO301",
-                    "courseName": "Microeconomics",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "B-"
-                },
-                {
-                    "course": "ECO311",
-                    "courseName": "Game Theory",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "C"
-                },
-                {
-                    "course": "ECO311",
-                    "courseName": "Game Theory",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "C"
+                    "grade": "B"
                 }
             ]
         }
     },
     "cw": {
-        "isCompleteBool": true,
-        "isCompleteText": "Complete",
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
         "data": {
-            "totalCredits": 2,
-            "courses": [
-                {
-                    "course": "MSC491",
-                    "courseName": "Community Work",
-                    "semester": "6",
-                    "status": "Complete",
-                    "credits": 1,
-                    "grade": "S"
-                },
-                {
-                    "course": "MSC491",
-                    "courseName": "Community Work",
-                    "semester": "6",
-                    "status": "Complete",
-                    "credits": 1,
-                    "grade": "S"
-                }
-            ]
+            "totalCredits": 0,
+            "courses": []
         }
     },
     "sg": {
@@ -296,49 +255,33 @@
         }
     },
     "thirty_two_credits": {
-        "isCompleteBool": true,
-        "isCompleteText": "Complete",
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
         "data": {
-            "totalCredits": 16,
+            "totalCredits": 12,
             "courseData": [
                 {
-                    "course": "CSE343",
-                    "courseName": "Machine Learning",
-                    "semester": "5",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "A-"
-                },
-                {
-                    "course": "CSE564",
-                    "courseName": "Reinforcement Learning",
-                    "semester": "5",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "B"
-                },
-                {
-                    "course": "CSE556",
-                    "courseName": "Natural Language Processing",
+                    "course": "CSE535",
+                    "courseName": "Mobile Computing",
                     "semester": "6",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "B"
+                    "grade": "D"
                 },
                 {
-                    "course": "CSE998A3",
-                    "courseName": "CSE998A3",
+                    "course": "CSE585",
+                    "courseName": "Computing for Medicine",
                     "semester": "7",
                     "status": "Complete",
-                    "credits": 2,
-                    "grade": "S"
+                    "credits": 4,
+                    "grade": "C"
                 },
                 {
-                    "course": "CSE998A3",
-                    "courseName": "CSE998A3",
+                    "course": "CSE998A1",
+                    "courseName": "CSE998A1",
                     "semester": "7",
                     "status": "Complete",
-                    "credits": 2,
+                    "credits": 4,
                     "grade": "S"
                 }
             ]
@@ -353,10 +296,10 @@
                 {
                     "course": "BIP398",
                     "courseName": "Independent Project",
-                    "semester": "5",
+                    "semester": "Summer Term 3",
                     "status": "Complete",
                     "credits": 4,
-                    "grade": "A"
+                    "grade": "A-"
                 }
             ]
         }
@@ -368,19 +311,11 @@
             "totalCredits": 4,
             "courses": [
                 {
-                    "course": "CSE998A3",
+                    "course": "CSE998A1",
                     "courseName": "Distance Course in CSE",
                     "semester": "7",
                     "status": "Complete",
-                    "credits": 2,
-                    "grade": "S"
-                },
-                {
-                    "course": "CSE998A3",
-                    "courseName": "Distance Course in CSE",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 2,
+                    "credits": 4,
                     "grade": "S"
                 }
             ]
@@ -388,32 +323,33 @@
     },
     "two_x_courses": {
         "isCompleteBool": true,
-        "isCompleteText": "Not Done",
+        "isCompleteText": "Complete",
         "data": {
-            "totalCredits": 0,
-            "courses": []
+            "totalCredits": 4,
+            "courses": [
+                {
+                    "course": "CSE232",
+                    "courseName": "Computer Networks",
+                    "semester": "5",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "D"
+                }
+            ]
         }
     },
     "btp": {
         "isCompleteBool": true,
         "isCompleteText": "Incomplete",
         "data": {
-            "totalCredits": 12,
+            "totalCredits": 4,
             "courses": [
                 {
-                    "course": "BTP499B",
-                    "courseName": "B.Tech. Project",
+                    "course": "BTP498",
+                    "courseName": "B.Tech Project",
                     "semester": "7",
                     "status": "Complete",
-                    "credits": 6,
-                    "grade": "A-"
-                },
-                {
-                    "course": "BTP499B",
-                    "courseName": "B.Tech. Project",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 6,
+                    "credits": 4,
                     "grade": "A-"
                 }
             ]
@@ -430,17 +366,17 @@
             },
             {
                 "rule": "Required 168 Credits",
-                "value": 122,
+                "value": 138,
                 "status": "No"
             },
             {
                 "rule": "BTP",
-                "value": 12,
+                "value": 4,
                 "status": "No"
             },
             {
                 "rule": "CGPA",
-                "value": "NaN",
+                "value": "6.53",
                 "status": "No"
             }
         ]
@@ -484,13 +420,13 @@
         {
             "isCompleteBool": false,
             "isCompleteText": "Not Done",
-            "totalCredits": 20,
+            "totalCredits": 0,
             "data": {
                 "stream": "Economics",
                 "coreCoursesCompleted": {
                     "isCompleteBool": false,
                     "isCompleteText": "Not Done",
-                    "totalCredits": 16,
+                    "totalCredits": 0,
                     "data": [
                         {
                             "course": "ECO221",
@@ -502,36 +438,27 @@
                         },
                         {
                             "course": "ECO301/ECO101",
-                            "courseName": "Microeconomics",
-                            "semester": "7",
-                            "status": "Complete",
-                            "credits": 4,
-                            "grade": "B-"
+                            "courseName": "",
+                            "semester": "",
+                            "status": "Not Done",
+                            "credits": 0,
+                            "grade": ""
                         },
                         {
                             "course": "ECO311/ECO511",
-                            "courseName": "Game Theory",
-                            "semester": "7",
-                            "status": "Complete",
-                            "credits": 4,
-                            "grade": "C"
+                            "courseName": "",
+                            "semester": "",
+                            "status": "Not Done",
+                            "credits": 0,
+                            "grade": ""
                         }
                     ]
                 },
                 "additionalCreditsCompleted": {
                     "isCompleteBool": false,
                     "isCompleteText": "Not Done",
-                    "totalCredits": 4,
-                    "data": [
-                        {
-                            "course": "ECO223",
-                            "courseName": "Money and Banking",
-                            "semester": "2",
-                            "status": "Complete",
-                            "credits": 4,
-                            "grade": "A-"
-                        }
-                    ]
+                    "totalCredits": 0,
+                    "data": []
                 },
                 "ipIncluded": {
                     "isCompleteBool": false,
@@ -544,31 +471,14 @@
         {
             "isCompleteBool": false,
             "isCompleteText": "Not Done",
-            "totalCredits": 8,
+            "totalCredits": 0,
             "data": {
                 "stream": "Entrepreneurship",
                 "coreCoursesCompleted": {
                     "isCompleteBool": false,
                     "isCompleteText": "Not Done",
-                    "totalCredits": 8,
-                    "data": [
-                        {
-                            "course": "ECO301",
-                            "courseName": "Microeconomics",
-                            "semester": "7",
-                            "status": "Complete",
-                            "credits": 4,
-                            "grade": "B-"
-                        },
-                        {
-                            "course": "ECO301",
-                            "courseName": "Microeconomics",
-                            "semester": "7",
-                            "status": "Complete",
-                            "credits": 4,
-                            "grade": "B-"
-                        }
-                    ]
+                    "totalCredits": 0,
+                    "data": []
                 },
                 "additionalCreditsCompleted": {
                     "isCompleteBool": false,
@@ -594,34 +504,14 @@
             "isCompleteBool": false,
             "isCompleteText": "Incomplete",
             "totalCredits": 0,
-            "data": {
-                "stream": "Design",
-                "mandatoryCourses": {
-                    "isCompleteBool": false,
-                    "isCompleteText": "Not Done",
-                    "totalCredits": 0,
-                    "data": []
-                },
-                "additionalCredits": {
-                    "isCompleteBool": false,
-                    "isCompleteText": "Not Done",
-                    "totalCredits": 0,
-                    "data": []
-                },
-                "ipIncluded": {
-                    "isCompleteBool": false,
-                    "isCompleteText": "Not Done",
-                    "data": [],
-                    "totalCredits": 0
-                }
-            }
+            "data": {}
         }
     ],
     "eco_major_core": {
-        "isCompleteBool": true,
-        "isCompleteText": "Complete",
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
         "data": {
-            "totalCredits": 16,
+            "totalCredits": 0,
             "courses": [
                 {
                     "course": "MTH377",
@@ -641,68 +531,42 @@
                 },
                 {
                     "course": "ECO301",
-                    "courseName": "Microeconomics",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "B-"
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
                 },
                 {
                     "course": "ECO311/ECO511",
-                    "courseName": "Game Theory",
-                    "semester": "7",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "C"
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
                 }
             ]
         }
     },
     "incomplete_grade": {
-        "isCompleteBool": false,
-        "isCompleteText": "Incomplete",
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
         "data": {
-            "courseData": [
-                {
-                    "course": "CSE656",
-                    "courseName": "Information Integration and Applications",
-                    "semester": "7",
-                    "status": "Incomplete",
-                    "credits": 4,
-                    "grade": "I"
-                },
-                {
-                    "course": "CSE656",
-                    "courseName": "Information Integration and Applications",
-                    "semester": "7",
-                    "status": "Incomplete",
-                    "credits": 4,
-                    "grade": "I"
-                }
-            ],
-            "totalCredits": 8
+            "courseData": [],
+            "totalCredits": 0
         }
     },
     "required_credits": {
         "isCompleteBool": false,
         "isCompleteText": "Incomplete",
-        "data": 122
+        "data": 138
     },
     "eco_major_elective": {
         "isCompleteBool": false,
         "isCompleteText": "Incomplete",
         "data": {
-            "totalCredits": 4,
-            "courses": [
-                {
-                    "course": "ECO223",
-                    "courseName": "Money and Banking",
-                    "semester": "2",
-                    "status": "Complete",
-                    "credits": 4,
-                    "grade": "A-"
-                }
-            ]
+            "totalCredits": 0,
+            "courses": []
         }
     }
 }

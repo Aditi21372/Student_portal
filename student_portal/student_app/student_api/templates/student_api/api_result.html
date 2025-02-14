@@ -1,13 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Results</title>
-</head>
-<body>
-    <h1>API Results</h1>
-    <pre>{{ json_data|safe }}</pre>
-    <a href="{% url 'api_view' %}">Go back</a>
-</body>
-</html>
+{% extends "student_api/base.html" %}
+
+{% block content %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">
+            <h1>Error</h1>
+            <p>{{ error }}</p>
+            {% if details %}
+                <p>Details: {{ details }}</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <h1>Student Data</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Student Information</h2>
+                <p>Roll Number: {{ data.roll_number }}</p>
+                <p>Name: {{ data.student_data.Name }}</p>
+                <p>Branch: {{ branch }}</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Course Information</h2>
+                <h3>Core Courses</h3>
+                <ul>
+                    {% if data.course_data.data.coreCourses %}
+                        {% for course in data.course_data.data.coreCourses %}
+                        <li>{{ course.courseName }} - {{ course.credits }} credits</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No core courses found</li>
+                    {% endif %}
+                </ul>
+                
+                <h3>SSH Requirements</h3>
+                <ul>
+                    {% if data.ssh_courses.data.courses %}
+                        {% for course in data.ssh_courses.data.courses %}
+                        <li>{{ course.courseName }} - {{ course.credits }} credits</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No SSH courses found</li>
+                    {% endif %}
+                </ul>
+                
+                <h3>Discipline Requirements</h3>
+                <ul>
+                    {% if data.discipline_courses.data.courseData %}
+                        {% for course in data.discipline_courses.data.courseData %}
+                        <li>{{ course.courseName }} - {{ course.credits }} credits</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No discipline courses found</li>
+                    {% endif %}
+                </ul>
+
+                {% if branch == 'CSAI' and csai_courses %}
+                <h3>CSAI Courses</h3>
+                <ul>
+                    {% for course in csai_courses.courses %}
+                    <li>{{ course.courseName }} - {{ course.credits }} credits</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if branch == 'CSSS' and eco_major %}
+                <h3>ECO Major</h3>
+                <h4>Core Courses</h4>
+                <ul>
+                    {% for course in eco_major.core.data.courses %}
+                    <li>{{ course.courseName }} - {{ course.credits }} credits</li>
+                    {% endfor %}
+                </ul>
+                <h4>Elective Courses</h4>
+                <ul>
+                    {% for course in eco_major.elective.data.courses %}
+                    <li>{{ course.courseName }} - {{ course.credits }} credits</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <h3>Additional Requirements</h3>
+                <ul>
+                    {% if btp_credits %}
+                    <li>BTP Credits: {{ btp_credits.data.totalCredits }}</li>
+                    {% endif %}
+                    {% if ip_credits %}
+                    <li>IP Credits: {{ ip_credits.data.totalCredits }}</li>
+                    {% endif %}
+                    {% if online_courses %}
+                    <li>Online Courses: {{ online_courses.data.totalCredits }}</li>
+                    {% endif %}
+                    {% if two_xx_courses %}
+                    <li>2XX Level Courses: {{ two_xx_courses.data.totalCredits }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

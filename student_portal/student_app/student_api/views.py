@@ -4,63 +4,45 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.core.cache import cache
-from django.core.exceptions import RequestAborted
 from .forms import RollNumberForm
 from student_app.api_calls.api_utils import run_api_calls
 
 logger = logging.getLogger(__name__)
 
-def handle_broken_pipe(func):
-    """Decorator to handle broken pipe errors gracefully"""
-    def wrapper(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except RequestAborted:
-            logger.info("Client closed connection prematurely")
-            return JsonResponse({"status": "connection_closed"})
-        except BrokenPipeError:
-            logger.info("Broken pipe error occurred")
-            return JsonResponse({"status": "connection_closed"})
-    return wrapper
-
 @require_http_methods(["GET", "POST"])
-@handle_broken_pipe
 def api_view(request):
-    """View to handle API form submission and display results"""
     if request.method == 'POST':
         form = RollNumberForm(request.POST)
         if form.is_valid():
+            roll_number = form.cleaned_data['roll_number']
             try:
-                roll_number = form.cleaned_data['roll_number']
+                api_data = run_api_calls(roll_number)
                 
-                # Try to get cached results first
-                cache_key = f'student_data_{roll_number}'
-                outputs = cache.get(cache_key)
+                # Handle API response (success or fallback)
+                context = {
+                'data': api_data,
+                'branch': api_data['student_data'].get('branch', 'Unknown'),
+                'ssh_requirements': api_data.get('ssh_courses', []),
+                'discipline_requirements': api_data.get('discipline_courses', []),
+                'csai_courses': api_data.get('csai_courses', {}),
+                'eco_major': api_data.get('eco_major', {}),
+                'btp_credits': api_data.get('btp_credits', {}),
+                'ip_credits': api_data.get('ip_credits', {}),
+                'online_courses': api_data.get('online_courses', {}),
+                'two_xx_courses': api_data.get('two_xx_courses', {})
+                }
                 
-                if outputs is None:
-                    outputs = run_api_calls(roll_number)
-                    print(outputs)
-                    # Cache the results for 5 minutes
-                    cache.set(cache_key, outputs, 300)
+                # Add error information if present
+                if 'error' in api_data.get('student_data', {}):
+                    context['error'] = api_data['student_data']['error']
+                    context['details'] = api_data['student_data'].get('details', '')
                 
-                import json
-                # After form submission, show studentCheckList.html with API data
-                return render(
-                    request, 
-                    'student_api/studentCheckList.html', 
-                    {'json_data': json.dumps(outputs), 'roll_number': roll_number}
-                )
+                return render(request, 'student_api/api_result.html', context)
             except Exception as e:
-                logger.error(f"Error processing request for roll number {roll_number}: {str(e)}")
-                return render(
-                    request,
-                    'student_api/api_form.html',
-                    {
-                        'form': form,
-                        'error': 'An error occurred while processing your request. Please try again.'
-                    }
-                )
-    
-    # For GET request, show the initial form
-    form = RollNumberForm()
-    return render(request, 'student_api/api_form.html', {'form': form})
+                logger.error(f"API call failed: {str(e)}")
+                return JsonResponse({'error': str(e)}, status=500)
+        else:
+            return JsonResponse({'error': 'Invalid form data'}, status=400)
+    else:
+        form = RollNumberForm()
+        return render(request, 'student_api/api_form.html', {'form': form})
