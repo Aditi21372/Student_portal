@@ -1,0 +1,23 @@
+{% extends "student_api/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Rules Overview</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Rule ID</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rule in rules %}
+            <tr>
+                <td>{{ rule.ruleId }}</td>
+                <td>{{ rule.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

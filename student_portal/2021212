@@ -1,0 +1,634 @@
+{
+    "roll_number": {
+        "Roll No": 2021212,
+        "Name": "TUSHAR  KUMAR",
+        "branch": "ECE"
+    },
+    "graduation_check": false,
+    "bucket": {
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
+        "data": {
+            "studentBucketCourses": [
+                [
+                    {
+                        "course": "ESC205A",
+                        "courseName": "",
+                        "semester": "",
+                        "status": "Incomplete",
+                        "credits": 0,
+                        "grade": ""
+                    },
+                    {
+                        "course": "ESC207A",
+                        "courseName": "Ecology Evolution and Environment",
+                        "semester": "6",
+                        "status": "Complete",
+                        "credits": 2,
+                        "grade": "A"
+                    }
+                ]
+            ],
+            "completedBuckets": [
+                true
+            ],
+            "totalCredits": 2
+        }
+    },
+    "mandatory": {
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
+        "data": {
+            "coreCourses": [
+                {
+                    "course": "CSE101",
+                    "courseName": "Introduction to Programming",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B-"
+                },
+                {
+                    "course": "DES102",
+                    "courseName": "Introduction to HCI",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B"
+                },
+                {
+                    "course": "MTH100",
+                    "courseName": "Maths I",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C-"
+                },
+                {
+                    "course": "ECE111",
+                    "courseName": "Digital Circuits",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B-"
+                },
+                {
+                    "course": "COM101",
+                    "courseName": "Communication Skills",
+                    "semester": "1",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B"
+                },
+                {
+                    "course": "CSE102",
+                    "courseName": "Data Structures and Algorithms",
+                    "semester": "2",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "D"
+                },
+                {
+                    "course": "SOC101",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "MTH201",
+                    "courseName": "Probability and Statistics ",
+                    "semester": "2",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C-"
+                },
+                {
+                    "course": "CSE112",
+                    "courseName": "Computer Organisation",
+                    "semester": "2",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C"
+                },
+                {
+                    "course": "SSH101",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "CSE231",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "SSH201",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "CSE121",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "CSE201",
+                    "courseName": "Advanced Programming",
+                    "semester": "3",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C"
+                },
+                {
+                    "course": "MTH203",
+                    "courseName": "Maths III",
+                    "semester": "3",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C-"
+                },
+                {
+                    "course": "CSE222",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "MTH377",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "CSE202",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "ECO221",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "COM301A",
+                    "courseName": "Technical Communication",
+                    "semester": "7",
+                    "status": "Complete",
+                    "credits": 2,
+                    "grade": "B-"
+                }
+            ],
+            "totalCredits": 42
+        }
+    },
+    "ssh_major": {
+        "isCompleteBool": false,
+        "isCompleteText": "Not Done",
+        "data": {
+            "totalCredits": 8,
+            "courses": [
+                {
+                    "course": "PSY308",
+                    "courseName": "Cognition of Motor Movement",
+                    "semester": "7",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C"
+                },
+                {
+                    "course": "SOC314",
+                    "courseName": "Technology and the Future of Work",
+                    "semester": "5",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C"
+                }
+            ]
+        }
+    },
+    "cw": {
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
+        "data": {
+            "totalCredits": 2,
+            "courses": [
+                {
+                    "course": "MSC491",
+                    "courseName": "Community Work",
+                    "semester": "Summer Term 3",
+                    "status": "Complete",
+                    "credits": 1,
+                    "grade": "S"
+                },
+                {
+                    "course": "MSC491",
+                    "courseName": "Community Work",
+                    "semester": "Summer Term 3",
+                    "status": "Complete",
+                    "credits": 1,
+                    "grade": "S"
+                }
+            ]
+        }
+    },
+    "sg": {
+        "isCompleteText": "Complete",
+        "isCompleteBool": true,
+        "data": {
+            "courses": [
+                {
+                    "course": "MSC481",
+                    "courseName": "Self Growth",
+                    "semester": "5",
+                    "status": "Complete",
+                    "credits": 1,
+                    "grade": "S"
+                },
+                {
+                    "course": "MSC481",
+                    "courseName": "Self Growth",
+                    "semester": "5",
+                    "status": "Complete",
+                    "credits": 1,
+                    "grade": "S"
+                }
+            ],
+            "totalCredits": 2
+        }
+    },
+    "thirty_two_credits": {
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
+        "data": {
+            "totalCredits": 0,
+            "courseData": []
+        }
+    },
+    "ip": {
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
+        "data": {
+            "totalCredits": 8,
+            "courses": [
+                {
+                    "course": "BIP398",
+                    "courseName": "Independent Project",
+                    "semester": "5",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "A"
+                },
+                {
+                    "course": "BIP399",
+                    "courseName": "Independent Project",
+                    "semester": "6",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "A"
+                }
+            ]
+        }
+    },
+    "online_courses": {
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
+        "data": {
+            "totalCredits": 4,
+            "courses": [
+                {
+                    "course": "ECE999",
+                    "courseName": "Distance Course in ECE",
+                    "semester": "6",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "S"
+                }
+            ]
+        }
+    },
+    "two_x_courses": {
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
+        "data": {
+            "totalCredits": 8,
+            "courses": [
+                {
+                    "course": "ECE250",
+                    "courseName": "Signals & Systems",
+                    "semester": "5",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "C-"
+                },
+                {
+                    "course": "BIO213",
+                    "courseName": "Introduction to Quantitative Biology",
+                    "semester": "6",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "B"
+                }
+            ]
+        }
+    },
+    "btp": {
+        "isCompleteBool": true,
+        "isCompleteText": "Incomplete",
+        "data": {
+            "totalCredits": 8,
+            "courses": [
+                {
+                    "course": "BTP498",
+                    "courseName": "B.Tech Project",
+                    "semester": "Summer Term 3",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "A-"
+                },
+                {
+                    "course": "BTP499",
+                    "courseName": "BTech Project",
+                    "semester": "7",
+                    "status": "Complete",
+                    "credits": 4,
+                    "grade": "A-"
+                }
+            ]
+        }
+    },
+    "honors": {
+        "isCompleteBool": true,
+        "isCompleteText": "Not Done",
+        "data": [
+            {
+                "rule": "Extra 12 credits",
+                "value": "0",
+                "status": "No"
+            },
+            {
+                "rule": "Required 168 Credits",
+                "value": 140,
+                "status": "No"
+            },
+            {
+                "rule": "BTP",
+                "value": 8,
+                "status": "No"
+            },
+            {
+                "rule": "CGPA",
+                "value": "NaN",
+                "status": "No"
+            }
+        ]
+    },
+    "minors": [
+        {
+            "isCompleteBool": false,
+            "isCompleteText": "Not Done",
+            "totalCredits": 8,
+            "data": {
+                "stream": "Computational Biology",
+                "coreCoursesCompleted": {
+                    "isCompleteBool": true,
+                    "isCompleteText": "Complete",
+                    "totalCredits": 4,
+                    "data": [
+                        {
+                            "course": "BIO213",
+                            "courseName": "Introduction to Quantitative Biology",
+                            "semester": "6",
+                            "status": "Complete",
+                            "credits": 4,
+                            "grade": "B"
+                        }
+                    ]
+                },
+                "additionalCreditsCompleted": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "data": [
+                        {
+                            "course": "BIO522",
+                            "courseName": "Algorithms in Computational Biology",
+                            "semester": "6",
+                            "status": "Complete",
+                            "credits": 4,
+                            "grade": "A-"
+                        }
+                    ],
+                    "totalCredits": 4
+                },
+                "ipIncluded": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 0,
+                    "data": []
+                }
+            }
+        },
+        {
+            "isCompleteBool": false,
+            "isCompleteText": "Not Done",
+            "totalCredits": 0,
+            "data": {
+                "stream": "Economics",
+                "coreCoursesCompleted": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 0,
+                    "data": [
+                        {
+                            "course": "ECO221",
+                            "courseName": "",
+                            "semester": "",
+                            "status": "Not Done",
+                            "credits": 0,
+                            "grade": ""
+                        },
+                        {
+                            "course": "ECO301/ECO101",
+                            "courseName": "",
+                            "semester": "",
+                            "status": "Not Done",
+                            "credits": 0,
+                            "grade": ""
+                        },
+                        {
+                            "course": "ECO311/ECO511",
+                            "courseName": "",
+                            "semester": "",
+                            "status": "Not Done",
+                            "credits": 0,
+                            "grade": ""
+                        }
+                    ]
+                },
+                "additionalCreditsCompleted": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 0,
+                    "data": []
+                },
+                "ipIncluded": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "data": [],
+                    "totalCredits": 0
+                }
+            }
+        },
+        {
+            "isCompleteBool": false,
+            "isCompleteText": "Not Done",
+            "totalCredits": 0,
+            "data": {
+                "stream": "Entrepreneurship",
+                "coreCoursesCompleted": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 0,
+                    "data": []
+                },
+                "additionalCreditsCompleted": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 0,
+                    "data": []
+                },
+                "ipIncluded": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "data": [],
+                    "totalCredits": 0
+                },
+                "apprenticeship": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "data": [],
+                    "totalCredits": 0
+                }
+            }
+        },
+        {
+            "isCompleteBool": false,
+            "isCompleteText": "Incomplete",
+            "totalCredits": 4,
+            "data": {
+                "stream": "Design",
+                "mandatoryCourses": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 0,
+                    "data": []
+                },
+                "additionalCredits": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "totalCredits": 4,
+                    "data": [
+                        {
+                            "course": "DES102",
+                            "courseName": "Introduction to HCI",
+                            "semester": "1",
+                            "status": "Complete",
+                            "credits": 4,
+                            "grade": "B"
+                        }
+                    ]
+                },
+                "ipIncluded": {
+                    "isCompleteBool": false,
+                    "isCompleteText": "Not Done",
+                    "data": [],
+                    "totalCredits": 0
+                }
+            }
+        }
+    ],
+    "eco_major_core": {
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
+        "data": {
+            "totalCredits": 0,
+            "courses": [
+                {
+                    "course": "MTH377",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "ECO221",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "ECO301",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                },
+                {
+                    "course": "ECO311/ECO511",
+                    "courseName": "",
+                    "semester": "",
+                    "status": "Incomplete",
+                    "credits": 0,
+                    "grade": ""
+                }
+            ]
+        }
+    },
+    "incomplete_grade": {
+        "isCompleteBool": true,
+        "isCompleteText": "Complete",
+        "data": {
+            "courseData": [],
+            "totalCredits": 0
+        }
+    },
+    "required_credits": {
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
+        "data": 140
+    },
+    "eco_major_elective": {
+        "isCompleteBool": false,
+        "isCompleteText": "Incomplete",
+        "data": {
+            "totalCredits": 0,
+            "courses": []
+        }
+    }
+}

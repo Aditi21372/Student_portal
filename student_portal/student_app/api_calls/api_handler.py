@@ -2,8 +2,10 @@ import requests
 import logging
 from typing import Dict, Any
 from .config import API_CONFIG
+from .rules import RuleManager
 
 logger = logging.getLogger(__name__)
+rule_manager = RuleManager()
 
 class APIHandler:
     def __init__(self):
@@ -90,20 +92,100 @@ class APIHandler:
                 'details': str(e)
             }
 
-    def get_csai_courses(self, roll_number: str) -> Dict[str, Any]:
-        """Get CSAI courses data"""
-        url = f"{self.base_url}/csai"
+    def get_csai_core_courses(self, roll_number: str) -> Dict[str, Any]:
+        """Get CSAI core courses data"""
+        url = f"{self.base_url}/csai-core"
         try:
             response = requests.get(url, timeout=self.timeout)
             response.raise_for_status()
             data = response.json()
-            data['rule'] = 'AI Core & Application Courses'
-            return data
-        except (requests.exceptions.RequestException, ValueError) as e:
-            logger.error(f"Error fetching CSAI courses: {str(e)}")
+            
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(12).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'error': 'Failed to fetch CSAI courses',
-                'details': str(e)
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
+                'data': {
+                    'totalCredits': data.get('data', {}).get('totalCredits', 0),
+                    'courses': data.get('data', {}).get('courses', [])
+                }
+            }
+        except (requests.exceptions.RequestException, ValueError) as e:
+            logger.error(f"Error fetching CSAI core courses: {str(e)}")
+            return {
+                'isCompleteBool': False,
+                'isCompleteText': 'Error',
+                'data': {
+                    'totalCredits': 0,
+                    'courses': []
+                }
+            }
+
+    def get_csai_application_courses(self, roll_number: str) -> Dict[str, Any]:
+        """Get CSAI application courses data"""
+        url = f"{self.base_url}/csai-application"
+        try:
+            response = requests.get(url, timeout=self.timeout)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(14).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
+            return {
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
+                'data': {
+                    'totalCredits': data.get('data', {}).get('totalCredits', 0),
+                    'courses': data.get('data', {}).get('courses', [])
+                }
+            }
+        except (requests.exceptions.RequestException, ValueError) as e:
+            logger.error(f"Error fetching CSAI application courses: {str(e)}")
+            return {
+                'isCompleteBool': False,
+                'isCompleteText': 'Error',
+                'data': {
+                    'totalCredits': 0,
+                    'courses': []
+                }
+            }
+
+    def get_csai_math_courses(self, roll_number: str) -> Dict[str, Any]:
+        """Get CSAI math courses data"""
+        url = f"{self.base_url}/csai-math"
+        try:
+            response = requests.get(url, timeout=self.timeout)
+            response.raise_for_status()
+            data = response.json()
+            
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(15).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
+            return {
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
+                'data': {
+                    'totalCredits': data.get('data', {}).get('totalCredits', 0),
+                    'courses': data.get('data', {}).get('courses', [])
+                }
+            }
+        except (requests.exceptions.RequestException, ValueError) as e:
+            logger.error(f"Error fetching CSAI math courses: {str(e)}")
+            return {
+                'isCompleteBool': False,
+                'isCompleteText': 'Error',
+                'data': {
+                    'totalCredits': 0,
+                    'courses': []
+                }
             }
 
     def get_eco_major_core(self, roll_number: str) -> Dict[str, Any]:
@@ -112,12 +194,30 @@ class APIHandler:
         try:
             response = requests.get(url, timeout=self.timeout)
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+            
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(16).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
+            return {
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
+                'data': {
+                    'totalCredits': data.get('data', {}).get('totalCredits', 0),
+                    'courses': data.get('data', {}).get('courses', [])
+                }
+            }
         except (requests.exceptions.RequestException, ValueError) as e:
             logger.error(f"Error fetching ECO Major core courses: {str(e)}")
             return {
-                'error': 'Failed to fetch ECO Major core courses',
-                'details': str(e)
+                'isCompleteBool': False,
+                'isCompleteText': 'Error',
+                'data': {
+                    'totalCredits': 0,
+                    'courses': []
+                }
             }
 
     def get_eco_major_elective(self, roll_number: str) -> Dict[str, Any]:
@@ -126,12 +226,30 @@ class APIHandler:
         try:
             response = requests.get(url, timeout=self.timeout)
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+            
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(17).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
+            return {
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
+                'data': {
+                    'totalCredits': data.get('data', {}).get('totalCredits', 0),
+                    'courses': data.get('data', {}).get('courses', [])
+                }
+            }
         except (requests.exceptions.RequestException, ValueError) as e:
             logger.error(f"Error fetching ECO Major elective courses: {str(e)}")
             return {
-                'error': 'Failed to fetch ECO Major elective courses',
-                'details': str(e)
+                'isCompleteBool': False,
+                'isCompleteText': 'Error',
+                'data': {
+                    'totalCredits': 0,
+                    'courses': []
+                }
             }
 
     def get_btp_credits(self, roll_number: str) -> Dict[str, Any]:
@@ -268,10 +386,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
-            # Transform the response to match Angular's expected format
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(0).check_rule(student_data, branch)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'coreCourses': data.get('data', {}).get('courses', [])
@@ -296,10 +418,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
-            # Transform the response to match Angular's expected format
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(1).check_rule(student_data, branch)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'studentBucketCourses': data.get('data', {}).get('courses', []),
@@ -326,9 +452,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(2).check_rule(student_data, branch)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', [])
@@ -353,9 +484,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(3).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', []),
@@ -381,9 +517,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(4).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', []),
@@ -409,9 +550,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(6).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', [])
@@ -436,9 +582,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(7).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', [])
@@ -463,9 +614,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(8).check_rule(student_data, branch)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', [])
@@ -490,9 +646,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(9).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', [])
@@ -603,9 +764,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(10).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'courses': data.get('data', {}).get('courses', []),
@@ -631,9 +797,14 @@ class APIHandler:
             response.raise_for_status()
             data = response.json()
             
+            # Get student data and process with rule system
+            student_data = self.get_student_data(roll_number)
+            rule_result = rule_manager.get_rule(11).check_rule(student_data, None)
+            
+            # Merge API data with rule processing
             return {
-                'isCompleteBool': data.get('isCompleteBool', False),
-                'isCompleteText': data.get('isCompleteText', 'Incomplete'),
+                'isCompleteBool': rule_result['isCompleteBool'],
+                'isCompleteText': rule_result['isCompleteText'],
                 'data': {
                     'totalCredits': data.get('data', {}).get('totalCredits', 0),
                     'button_text': 'No Action'
