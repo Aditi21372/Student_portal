@@ -1,6 +1,6 @@
 # Student Portal
 
-> A Django service that wraps **17+ academic-record APIs** into a single portal — graduation checks, grades, credit audits, honors/minors tracking, and more.
+> A Django service that wraps **17+ academic-record APIs** into a single portal: graduation checks, grades, credit audits, honors/minors tracking, and more.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
@@ -35,7 +35,7 @@ The application will be available at `http://127.0.0.1:8000/student_api/api/`
 |----------------|--------------------------|--------------------------------|
 | `API_BASE_URL` | `http://localhost:3002…` | Upstream academic API server   |
 | `DEBUG`        | `False`                  | Django debug mode              |
-| `ALLOWED_HOSTS`| —                        | Comma-separated allowed hosts  |
+| `ALLOWED_HOSTS`|:                        | Comma-separated allowed hosts  |
 
 ## Development notes
 
