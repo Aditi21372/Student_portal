@@ -1,5 +1,7 @@
 # Student Portal
 
+![CI](https://github.com/Aditi21372/Student_portal/actions/workflows/ci.yml/badge.svg) ![License](https://img.shields.io/badge/License-MIT-green)
+
 > A Django service that wraps **17+ academic-record APIs** into a single portal: graduation checks, grades, credit audits, honors/minors tracking, and more.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
